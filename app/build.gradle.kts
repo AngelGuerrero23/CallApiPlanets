@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
@@ -48,8 +47,9 @@ dependencies {
     implementation(libs.converter.moshi)
 
     // Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
     implementation(libs.androidx.espresso.core)
     implementation(libs.play.services.tasks)
 
@@ -58,7 +58,8 @@ dependencies {
     implementation("androidx.navigation:navigation-runtime-ktx:2.8.0")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.59.2")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 

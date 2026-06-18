@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.hilt.android)
 }
 
@@ -75,7 +74,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
     implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

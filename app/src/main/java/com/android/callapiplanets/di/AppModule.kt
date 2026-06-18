@@ -1,16 +1,14 @@
 package com.android.callapiplanets.di
 
-import androidx.test.espresso.core.internal.deps.dagger.Module
-import androidx.test.espresso.core.internal.deps.dagger.Provides
+import dagger.Module
+import dagger.Provides
 import com.android.callapiplanets.data.remote.DragonBallApi
 import com.android.callapiplanets.data.repository.PlanetRepositoryImp
-import com.android.callapiplanets.domain.model.Planet
 import com.android.callapiplanets.domain.repository.PlanetRepository
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.serialization.json.Json
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton

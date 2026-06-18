@@ -46,6 +46,10 @@ dependencies {
     implementation(libs.squareup.moshi.kotlin)
     implementation(libs.converter.moshi)
 
+    // Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
     // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)

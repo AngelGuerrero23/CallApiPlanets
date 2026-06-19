@@ -27,10 +27,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import com.android.callapiplanets.data.remote.dto.PlanetDto
+import com.android.callapiplanets.ui.theme.CallApiPlanetsTheme
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -162,5 +165,33 @@ fun PlanetItem(
                 )
             }
         }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun ListPlanetScreenPreview() {
+    CallApiPlanetsTheme {
+        ListPlanetBodyScreen(
+            state = ListPlanetUiState(
+                planets = listOf(
+                    PlanetDto(
+                        id = 1,
+                        name = "Tierra",
+                        isDestroyed = false,
+                        description = "Un planeta habitado por humanos y otros seres.",
+                        image = "https://dragonball-api.com/api/planetas/Tierra.png"
+                    ),
+                    PlanetDto(
+                        id = 2,
+                        name = "Namek",
+                        isDestroyed = true,
+                        description = "Hogar de los Namekianos.",
+                        image = "https://dragonball-api.com/api/planetas/Namek.png"
+                    )
+                )
+            ),
+            onEvent = {},
+            onPlanetClick = {}
+        )
     }
 }

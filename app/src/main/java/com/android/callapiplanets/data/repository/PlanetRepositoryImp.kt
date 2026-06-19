@@ -25,8 +25,25 @@ class PlanetRepositoryImp @Inject constructor(
            }else{
                Error("Error del servidor: ${response.message()}")
            }
-       }catch (e: Exception){
-           Error("Error de conexion: ${e.localizedMessage}")
+       }catch (e: Exception) {
+           if (!name.isNullOrBlank()) {
+               try {
+                   val alternativeResponse =
+                       api.getPlanets(page = 1, limit = 50, name = null, isDestroyed = null)
+                   if (alternativeResponse.isSuccessful && alternativeResponse.body() != null) {
+                       val filteredList = alternativeResponse.body()!!.items.filter {
+                           it.name.contains(name, ignoreCase = true)
+                       }
+                       Success(filteredList)
+                   } else {
+                       Error("Error al filtrar localmente.")
+                   }
+               } catch (nestedException: Exception) {
+                   Error("Error en filtro: ${nestedException.localizedMessage}")
+               }
+           } else {
+               Error("Error de conexion: ${e.localizedMessage}")
+           }
        }
     }
 

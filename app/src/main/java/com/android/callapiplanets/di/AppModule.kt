@@ -23,7 +23,7 @@ object AppModule{
     fun provideMoshi(): Moshi{
         return Moshi
             .Builder()
-            .add(com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory())
+            .add(KotlinJsonAdapterFactory())
             .build()
     }
     @Provides

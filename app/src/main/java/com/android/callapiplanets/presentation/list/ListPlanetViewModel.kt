@@ -45,7 +45,9 @@ class ListPlanetViewModel @Inject constructor(
 
             val current = _state.value
             val result = getPlanetsUseCase(
-                name = current.nameFilter.takeIf { it.isNotBlank() },
+                page = 1,
+                limit = 20,
+                name = current.nameFilter.trim().takeIf { it.isNotBlank() },
                 isDestroyed = current.isDestroyedFilter
             )
 
@@ -54,7 +56,7 @@ class ListPlanetViewModel @Inject constructor(
                     _state.update {
                         it.copy(
                             isLoading = false,
-                            planets = result.data ?: emptyList()
+                            planets = result.data?: emptyList()
                         )
                     }
 
@@ -62,6 +64,7 @@ class ListPlanetViewModel @Inject constructor(
                     _state.update {
                         it.copy(
                             isLoading = false,
+                            planets = emptyList(),
                             error = result.message
                         )
                     }

@@ -23,14 +23,14 @@ object AppModule{
     fun provideMoshi(): Moshi{
         return Moshi
             .Builder()
-            .add(KotlinJsonAdapterFactory())
+            .add(com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory())
             .build()
     }
     @Provides
     @Singleton
     fun provideApi(moshi: Moshi): DragonBallApi{
         return Retrofit.Builder()
-            .baseUrl("https://dragonball-api.com/api-docs")
+            .baseUrl("https://dragonball-api.com/api/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(DragonBallApi::class.java)

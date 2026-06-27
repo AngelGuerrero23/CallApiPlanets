@@ -1,7 +1,7 @@
-package com.android.callapiplanets.data.remote
+package com.android.callapiplanets.data.planet.remote
 
-import com.android.callapiplanets.data.remote.dto.PlanetDto
-import com.android.callapiplanets.data.remote.dto.PlanetsResponseDto
+import com.android.callapiplanets.data.planet.remote.dto.PlanetDto
+import com.android.callapiplanets.data.planet.remote.dto.PlanetsResponseDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

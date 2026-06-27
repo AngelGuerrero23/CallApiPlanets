@@ -1,9 +1,9 @@
-package com.android.callapiplanets.presentation.list
+package com.android.callapiplanets.presentation.planet.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.callapiplanets.data.remote.Resource
-import com.android.callapiplanets.domain.usecase.GetPlanetsUseCase
+import com.android.callapiplanets.data.planet.remote.Resource
+import com.android.callapiplanets.domain.planet.usecase.GetPlanetsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -37,44 +37,38 @@ class ListPlanetViewModel @Inject constructor(
 
     fun loadPlanet() {
         viewModelScope.launch {
-            _state.update {
-                it.copy(
-                    isLoading = true
-                )
-            }
-
             val current = _state.value
-            val result = getPlanetsUseCase(
+            getPlanetsUseCase(
                 page = 1,
                 limit = 20,
                 name = current.nameFilter.trim().takeIf { it.isNotBlank() },
                 isDestroyed = current.isDestroyedFilter
-            )
+            ).collect { result ->
+                when (result) {
+                    is Resource.Success ->
+                        _state.update {
+                            it.copy(
+                                isLoading = false,
+                                planets = result.data ?: emptyList()
+                            )
+                        }
 
-            when (result) {
-                is Resource.Success ->
-                    _state.update {
-                        it.copy(
-                            isLoading = false,
-                            planets = result.data?: emptyList()
-                        )
-                    }
+                    is Resource.Error ->
+                        _state.update {
+                            it.copy(
+                                isLoading = false,
+                                planets = emptyList(),
+                                error = result.message
+                            )
+                        }
 
-                is Resource.Error ->
-                    _state.update {
-                        it.copy(
-                            isLoading = false,
-                            planets = emptyList(),
-                            error = result.message
-                        )
-                    }
-
-                is Resource.Loading ->
-                    _state.update {
-                        it.copy(
-                            isLoading = true,
-                        )
-                    }
+                    is Resource.Loading ->
+                        _state.update {
+                            it.copy(
+                                isLoading = true,
+                            )
+                        }
+                }
             }
         }
     }

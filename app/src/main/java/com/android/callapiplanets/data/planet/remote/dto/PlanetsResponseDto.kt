@@ -1,6 +1,6 @@
-package com.android.callapiplanets.data.remote.dto
+package com.android.callapiplanets.data.planet.remote.dto
 
-import com.android.callapiplanets.domain.model.Planet
+import com.android.callapiplanets.domain.planet.model.Planet
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)

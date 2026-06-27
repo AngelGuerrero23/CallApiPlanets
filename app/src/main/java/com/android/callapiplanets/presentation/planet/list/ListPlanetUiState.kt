@@ -1,6 +1,6 @@
-package com.android.callapiplanets.presentation.list
+package com.android.callapiplanets.presentation.planet.list
 
-import com.android.callapiplanets.data.remote.dto.PlanetDto
+import com.android.callapiplanets.data.planet.remote.dto.PlanetDto
 
 data class ListPlanetUiState(
     val isLoading: Boolean = false,

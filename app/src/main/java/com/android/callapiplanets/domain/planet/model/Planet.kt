@@ -1,4 +1,4 @@
-package com.android.callapiplanets.domain.model
+package com.android.callapiplanets.domain.planet.model
 
 data class Planet(
     val id: Int,

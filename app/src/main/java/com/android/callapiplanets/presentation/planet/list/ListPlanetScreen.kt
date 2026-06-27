@@ -1,4 +1,4 @@
-package com.android.callapiplanets.presentation.list
+package com.android.callapiplanets.presentation.planet.list
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -31,7 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.android.callapiplanets.data.remote.dto.PlanetDto
+import com.android.callapiplanets.data.planet.remote.dto.PlanetDto
 import com.android.callapiplanets.ui.theme.CallApiPlanetsTheme
 
 

@@ -1,4 +1,4 @@
-package com.android.callapiplanets.navigation
+package com.android.callapiplanets.presentation.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
@@ -7,10 +7,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.android.callapiplanets.presentation.detail.DetailPlanetScreen
-import com.android.callapiplanets.presentation.detail.DetailPlanetViewModel
-import com.android.callapiplanets.presentation.list.ListPlanetScreen
-import com.android.callapiplanets.presentation.list.ListPlanetViewModel
+import com.android.callapiplanets.presentation.planet.detail.DetailPlanetScreen
+import com.android.callapiplanets.presentation.planet.detail.DetailPlanetViewModel
+import com.android.callapiplanets.presentation.planet.list.ListPlanetScreen
+import com.android.callapiplanets.presentation.planet.list.ListPlanetViewModel
 
 
 @Composable

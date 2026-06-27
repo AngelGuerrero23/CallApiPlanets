@@ -9,7 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.android.callapiplanets.navigation.RegistroNavHost
+import com.android.callapiplanets.presentation.navigation.RegistroNavHost
 import com.android.callapiplanets.ui.theme.CallApiPlanetsTheme
 import dagger.hilt.android.AndroidEntryPoint
 

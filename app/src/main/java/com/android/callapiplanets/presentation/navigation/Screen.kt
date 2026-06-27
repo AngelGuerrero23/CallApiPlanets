@@ -1,4 +1,4 @@
-package com.android.callapiplanets.navigation
+package com.android.callapiplanets.presentation.navigation
 
 import kotlinx.serialization.Serializable
 

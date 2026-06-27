@@ -2,9 +2,9 @@ package com.android.callapiplanets.di
 
 import dagger.Module
 import dagger.Provides
-import com.android.callapiplanets.data.remote.DragonBallApi
-import com.android.callapiplanets.data.repository.PlanetRepositoryImp
-import com.android.callapiplanets.domain.repository.PlanetRepository
+import com.android.callapiplanets.data.planet.remote.DragonBallApi
+import com.android.callapiplanets.data.planet.repository.PlanetRepositoryImp
+import com.android.callapiplanets.domain.planet.repository.PlanetRepository
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.hilt.InstallIn

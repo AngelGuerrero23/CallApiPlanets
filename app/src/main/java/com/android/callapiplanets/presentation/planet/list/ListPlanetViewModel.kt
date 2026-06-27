@@ -1,9 +1,9 @@
-package com.android.callapiplanets.presentation.list
+package com.android.callapiplanets.presentation.planet.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.callapiplanets.data.remote.Resource
-import com.android.callapiplanets.domain.usecase.GetPlanetsUseCase
+import com.android.callapiplanets.data.planet.remote.Resource
+import com.android.callapiplanets.domain.planet.usecase.GetPlanetsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

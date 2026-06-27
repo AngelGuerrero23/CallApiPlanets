@@ -1,4 +1,4 @@
-package com.android.callapiplanets.presentation.list
+package com.android.callapiplanets.presentation.planet.list
 
 sealed interface ListPlanetUiEvent{
     data class UpdateFilters(

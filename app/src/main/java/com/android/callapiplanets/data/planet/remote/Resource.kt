@@ -1,4 +1,4 @@
-package com.android.callapiplanets.data.remote
+package com.android.callapiplanets.data.planet.remote
 
 sealed class Resource<T>(
     val data: T? = null,

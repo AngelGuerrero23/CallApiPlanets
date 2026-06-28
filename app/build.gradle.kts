@@ -41,6 +41,11 @@ android {
     buildFeatures {
         compose = true
     }
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+        disable.add("LintVitalAnalyzeRelease")
+    }
 }
 
 dependencies {

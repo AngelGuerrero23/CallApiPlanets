@@ -3,12 +3,12 @@ package com.android.callapiplanets.data.character.remote.dto
 import com.android.callapiplanets.domain.character.model.Character
 import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
+
 data class CharacterResponseDto(
     val items: List<CharacterDto>
 )
 
-@JsonClass(generateAdapter = true)
+
 data class CharacterDto(
     val id: Int,
     val name: String,

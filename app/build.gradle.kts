@@ -44,6 +44,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.firebase.crashlytics.buildtools)
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit2.kotlinx.serialization.converter)

@@ -4,9 +4,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
-import com.android.callapiplanets.PlanetDetailRoute
 import com.android.callapiplanets.data.remote.Resource
 import com.android.callapiplanets.domain.usecase.GetPlanetDetailUseCase
+import com.android.callapiplanets.navigation.PlanetDetailRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -24,21 +24,28 @@ class DetailPlanetViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
-        val args = savedState.toRoute<PlanetDetailRoute>()
-        loadPlanet(args.id)
+        try {
+            val args = savedState.toRoute<PlanetDetailRoute>()
+            loadPlanet(args.id)
+        } catch (e: Exception) {
+            _state.update { it.copy(error = "Error al obtener argumentos") }
+        }
     }
 
-    private fun loadPlanet(id: Int){
+    private fun loadPlanet(id: Int) {
         viewModelScope.launch {
-            _state.update{it.copy(isLoading = true)}
-            when(val result = getPlanetDetailUseCase(id)){
+            getPlanetDetailUseCase(id).collect { result ->
+                when (result) {
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
                     is Resource.Success -> _state.update { it.copy(isLoading = false, planet = result.data) }
-                    is Resource.Error -> _state.update { it.copy(
-                        isLoading = false,
-                        error = result.message
-                    ) }
+                    is Resource.Error -> _state.update {
+                        it.copy(
+                            isLoading = false,
+                            error = result.message
+                        )
+                    }
                 }
             }
         }
     }
+}

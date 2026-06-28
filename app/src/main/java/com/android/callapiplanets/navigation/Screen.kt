@@ -3,13 +3,12 @@ package com.android.callapiplanets.navigation
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed class Screen{
-
-}
-
-object PlanetListRoute
+sealed class Screen
 
 @Serializable
-data class  PlanetDetailRoute(
+data object PlanetListRoute
+
+@Serializable
+data class PlanetDetailRoute(
     val id: Int
 )

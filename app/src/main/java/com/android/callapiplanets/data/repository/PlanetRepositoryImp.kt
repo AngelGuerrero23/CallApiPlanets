@@ -2,8 +2,8 @@ package com.android.callapiplanets.data.repository
 
 import com.android.callapiplanets.data.remote.DragonBallApi
 import com.android.callapiplanets.data.remote.Resource
-import com.android.callapiplanets.data.remote.Resource.*
 import com.android.callapiplanets.data.remote.dto.PlanetDto
+import com.android.callapiplanets.domain.model.Planet
 import com.android.callapiplanets.domain.repository.PlanetRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,12 +13,12 @@ class PlanetRepositoryImp @Inject constructor(
     private val api: DragonBallApi
 ) : PlanetRepository {
 
-    override suspend fun getPlanets(
+    override fun getPlanets(
         page: Int,
         limit: Int,
         name: String?,
         isDestroyed: Boolean?
-    ): Flow<Resource<List<PlanetDto>>> = flow {
+    ): Flow<Resource<List<Planet>>> = flow {
 
         emit(Resource.Loading())
 
@@ -26,7 +26,7 @@ class PlanetRepositoryImp @Inject constructor(
             val response = api.getPlanets(page, limit, name, isDestroyed)
 
             if (response.isSuccessful && response.body() != null) {
-                val data = response.body()!!.items
+                val data = response.body()!!.items.map { it.toDomain() }
                 emit(Resource.Success(data))
             } else {
                 emit(Resource.Error("Error del servidor: ${response.message()}"))
@@ -40,7 +40,7 @@ class PlanetRepositoryImp @Inject constructor(
                     if (alternativeResponse.isSuccessful && alternativeResponse.body() != null) {
                         val filteredList = alternativeResponse.body()!!.items.filter {
                             it.name.contains(name, ignoreCase = true)
-                        }
+                        }.map { it.toDomain() }
                         emit(Resource.Success(filteredList))
                     } else {
                         emit(Resource.Error("Error al filtrar localmente."))
@@ -54,14 +54,14 @@ class PlanetRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getPlanetDetail(id: Int): Flow<Resource<PlanetDto>> = flow {
+    override fun getPlanetDetail(id: Int): Flow<Resource<Planet>> = flow {
 
         emit(Resource.Loading())
 
         try {
             val response = api.getPlanetDetail(id)
             if (response.isSuccessful && response.body() != null) {
-                emit(Resource.Success(response.body()!!))
+                emit(Resource.Success(response.body()!!.toDomain()))
             } else {
                 emit(Resource.Error("Planeta no encontrado."))
             }

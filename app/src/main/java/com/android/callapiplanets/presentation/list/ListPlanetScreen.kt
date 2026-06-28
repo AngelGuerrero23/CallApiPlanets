@@ -31,7 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.android.callapiplanets.data.remote.dto.PlanetDto
+import com.android.callapiplanets.domain.model.Planet
 import com.android.callapiplanets.ui.theme.CallApiPlanetsTheme
 
 
@@ -129,7 +129,7 @@ fun FilterSection(
 
 @Composable
 fun PlanetItem(
-    planets: PlanetDto,
+    planets: Planet,
     onPlanetClick: () -> Unit
 ){
     ElevatedCard(
@@ -174,14 +174,14 @@ fun ListPlanetScreenPreview() {
         ListPlanetBodyScreen(
             state = ListPlanetUiState(
                 planets = listOf(
-                    PlanetDto(
+                    Planet(
                         id = 1,
                         name = "Tierra",
                         isDestroyed = false,
                         description = "Un planeta habitado por humanos y otros seres.",
                         image = "https://dragonball-api.com/api/planetas/Tierra.png"
                     ),
-                    PlanetDto(
+                    Planet(
                         id = 2,
                         name = "Namek",
                         isDestroyed = true,

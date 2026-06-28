@@ -1,5 +1,6 @@
 package com.android.callapiplanets.data.remote.dto
 
+import com.android.callapiplanets.data.remote.Resource
 import com.android.callapiplanets.domain.model.Planet
 import com.squareup.moshi.JsonClass
 

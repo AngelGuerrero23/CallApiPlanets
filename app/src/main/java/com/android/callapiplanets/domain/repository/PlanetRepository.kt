@@ -6,12 +6,12 @@ import com.android.callapiplanets.domain.model.Planet
 import kotlinx.coroutines.flow.Flow
 
 interface PlanetRepository {
-    suspend fun getPlanets(
+    fun getPlanets(
         page: Int,
         limit: Int,
         name: String?,
         isDestroyed: Boolean?
-    ): Flow<Resource<List<PlanetDto>>>
+    ): Flow<Resource<List<Planet>>>
 
-    suspend fun getPlanetDetail(id: Int): Flow<Resource<PlanetDto>>
+     fun getPlanetDetail(id: Int): Flow<Resource<Planet>>
 }

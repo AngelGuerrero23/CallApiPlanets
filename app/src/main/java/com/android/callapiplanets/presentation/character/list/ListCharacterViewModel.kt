@@ -21,7 +21,6 @@ class ListCharacterViewModel  @Inject constructor(
     private val _state = MutableStateFlow(ListCharacterUiState())
     val state = _state.asStateFlow()
 
-    private var searchJob: Job? = null
 
     init {
         loadCharacters()
@@ -37,7 +36,6 @@ class ListCharacterViewModel  @Inject constructor(
                         filterRace = event.race
                     )
                 }
-                loadCharacters()
             }
 
             ListCharacterEvent.Search -> loadCharacters()
@@ -45,9 +43,8 @@ class ListCharacterViewModel  @Inject constructor(
     }
 
     private fun loadCharacters() {
-        searchJob?.cancel()
-        searchJob = viewModelScope.launch {
-            val current = _state.value
+         viewModelScope.launch {
+            _state.update { it.copy(isLoading = true) }
 
             getCharactersUseCase(
                 page = 1,

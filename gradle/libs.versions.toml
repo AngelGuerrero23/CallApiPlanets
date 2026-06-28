@@ -20,6 +20,7 @@ moshiKotlin = "1.15.0"
 converterMoshi = "2.11.0"
 room = "2.6.1"
 coil = "3.0.4"
+firebaseCrashlyticsBuildtools = "3.0.7"
 
 [libraries]
 retrofit= {module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit"}
@@ -52,6 +53,7 @@ room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,6 +1,6 @@
-package com.android.callapiplanets.presentation.list
+package com.android.callapiplanets.presentation.planet.list
 
-import com.android.callapiplanets.domain.model.Planet
+import com.android.callapiplanets.domain.planet.model.Planet
 
 data class ListPlanetUiState(
     val isLoading: Boolean = false,

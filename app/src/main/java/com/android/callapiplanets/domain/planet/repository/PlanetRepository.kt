@@ -1,7 +1,7 @@
 package com.android.callapiplanets.domain.planet.repository
 
 import com.android.callapiplanets.data.planet.remote.Resource
-import com.android.callapiplanets.data.planet.remote.dto.PlanetDto
+import com.android.callapiplanets.domain.planet.model.Planet
 import kotlinx.coroutines.flow.Flow
 
 interface PlanetRepository {
@@ -10,7 +10,7 @@ interface PlanetRepository {
         limit: Int,
         name: String?,
         isDestroyed: Boolean?
-    ): Flow<Resource<List<PlanetDto>>>
+    ): Flow<Resource<List<Planet>>>
 
-    fun getPlanetDetail(id: Int): Flow<Resource<PlanetDto>>
+    fun getPlanetDetail(id: Int): Flow<Resource<Planet>>
 }

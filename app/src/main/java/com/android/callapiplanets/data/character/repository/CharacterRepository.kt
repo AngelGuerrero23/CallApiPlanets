@@ -1,8 +1,8 @@
 package com.android.callapiplanets.data.character.repository
 
-import com.android.callapiplanets.data.character.remote.Resource
+import com.android.callapiplanets.data.planet.remote.Resource
 import com.android.callapiplanets.domain.character.model.Character
-
+import kotlinx.coroutines.flow.Flow
 
 interface CharacterRepository {
     fun getCharacters(
@@ -11,7 +11,7 @@ interface CharacterRepository {
         name: String?,
         gender: String?,
         race: String?,
-    ): Resource<List<Character>>
+    ): Flow<Resource<List<Character>>>
 
-    fun getCharacterDetail(id: Int): Resource<Character>
+    fun getCharacterDetail(id: Int): Flow<Resource<Character>>
 }

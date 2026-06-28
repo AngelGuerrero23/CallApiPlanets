@@ -1,10 +1,10 @@
-package com.android.callapiplanets.data.repository
+package com.android.callapiplanets.data.planet.repository
 
-import com.android.callapiplanets.data.remote.DragonBallApi
-import com.android.callapiplanets.data.remote.Resource
-import com.android.callapiplanets.data.remote.dto.PlanetDto
-import com.android.callapiplanets.domain.model.Planet
-import com.android.callapiplanets.domain.repository.PlanetRepository
+import com.android.callapiplanets.data.planet.remote.DragonBallApi
+import com.android.callapiplanets.data.planet.remote.Resource
+import com.android.callapiplanets.data.planet.remote.dto.PlanetDto
+import com.android.callapiplanets.domain.planet.model.Planet
+import com.android.callapiplanets.domain.planet.repository.PlanetRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

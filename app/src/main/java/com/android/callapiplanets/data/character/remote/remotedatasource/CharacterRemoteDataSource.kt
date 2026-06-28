@@ -4,6 +4,7 @@ import com.android.callapiplanets.data.character.remote.dto.CharacterDto
 import com.android.callapiplanets.data.character.remote.dto.CharacterResponseDto
 import com.android.callapiplanets.data.planet.remote.DragonBallApi
 import retrofit2.HttpException
+import javax.inject.Inject
 
 class CharacterRemoteDataSource @Inject constructor(
     private val api: DragonBallApi
